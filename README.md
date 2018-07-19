@@ -4,7 +4,7 @@
 ## Description
 You will be building an app that reads from a JSON file and displays the list of tasks using the latest .NET and Front-End Web technologies. 
 
-## Tech Requirements
+## Requirements
  - Backend: 
 	 - .NET
 	 - MVC 5+
@@ -25,7 +25,6 @@ You will be building an app that reads from a JSON file and displays the list of
 	 - git ignore file
 	 - instructions on how to run and build your app
 
+**Must meet all requirements*
+
 **Lastly, don't forget to show us your creative side with pretty UI/UX!**
-
-
-```

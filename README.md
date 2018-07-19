@@ -8,7 +8,7 @@ You will be building an app that reads from a JSON file and displays the list of
  - Backend: 
 	 - .NET
 	 - MVC 5+
-	 - Web API 2+
+	 - Web API 2+ (RESTful APIs)
 	 - Razor View w/ Layouts, etc
 	 - Different Web.config settings for testing, staging and live environments within your app
  - Frontend:

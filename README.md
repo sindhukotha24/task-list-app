@@ -14,6 +14,7 @@ You will be building an app that reads from a JSON file and displays the list of
  - Frontend:
 	 - Module bundler of your choice (preferrably webpack)
 	 - JavaScript ES6
+	 - jQuery, React or Angular
 	 - SCSS
 	 - Promised based HTTP client or AJAX for consuming your Web APIs
 		 - library of your choice (e.g. jQuery AJAX, axios, etc)

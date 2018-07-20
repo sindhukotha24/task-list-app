@@ -1,0 +1,119 @@
+﻿@model IList<TaskListModels.TaskList>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var taskId = 0;
+
+        // Activate tooltip
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $(".delete").click(function () {
+
+            taskId = $(this).attr("data-taskId");
+        });
+
+        $(".edit").click(function () {
+
+            taskId = $(this).attr("data-taskId");
+
+            $.ajax({
+                type: "GET",
+                url: "/Task/Edit/" + taskId,
+                contentType: "application/json", // Specify the content type 
+                success: function (response) {
+                    $("#EditModelContent").html(response);
+                }
+            });
+        });
+
+        $("#DeleteRecord").click(function () {
+             
+            $.ajax({
+                url: "/Task/Delete/" + taskId,
+                success: function () {
+
+                    window.location.reload();
+                }
+            });
+        }); 
+    });
+</script> 
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2>Tasks <b>List</b></h2>
+                </div>
+                <div class="col-sm-6">
+                    <a href="../Task/Create" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Task</span></a>
+                </div>
+            </div>
+        </div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr> 
+                    <th>Task Id</th>
+                    <th>Task Name</th>
+                    <th>Task Requester</th>
+                    <th>Task Assignee</th>
+                    <th>Task Created Date</th>
+                    <th>Task Updated Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var task in Model)
+                {
+                    <tr> 
+                        <td>@task.TaskId</td>
+                        <td>@task.TaskName</td>
+                        <td>@task.TaskRequester</td>
+                        <td>@task.TaskAssignee</td>
+                        <td>@task.TaskCreatedDate</td>
+                        <td>@task.TaskUpdatedDate</td>
+                        <td>
+                            <a href="../Task/Edit/@task.TaskId" class="edit" data-taskId="@task.TaskId" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a href="#deleteEmployeeModal" class="delete" data-taskId="@task.TaskId" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="clearfix">
+            <div class="hint-text">Showing total <b>@Model.Count()</b> entries</div> 
+        </div>
+    </div>
+</div> 
+<!-- Delete Modal HTML -->
+<div id="deleteEmployeeModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Task</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete these Records?</p>
+                    <p class="text-warning"><small>This action cannot be undone.</small></p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input type="button" id="DeleteRecord" class="btn btn-danger" value="Delete">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

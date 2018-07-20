@@ -1,0 +1,47 @@
+﻿@model TaskListModels.TaskList
+
+@*@using (Html.BeginForm("Create", "Task", FormMethod.Post))*@
+ 
+@using (Ajax.BeginForm("Create", "Task", null, new AjaxOptions
+{
+    HttpMethod = "POST"
+}))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="modal-header">
+        <h4 class="modal-title">Add Task</h4> 
+    </div>
+    <div class="modal-body">
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TaskName)
+                @Html.EditorFor(model => model.TaskName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TaskName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TaskRequester)
+                @Html.EditorFor(model => model.TaskRequester, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TaskRequester, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TaskAssignee)
+                @Html.EditorFor(model => model.TaskAssignee, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TaskAssignee, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <a href="../" class="btn btn-default" data-toggle="modal"><span>Cancel</span></a> 
+        <input type="submit" class="btn btn-success" value="Add">
+    </div>
+}
+

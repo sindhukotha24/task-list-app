@@ -1,0 +1,5 @@
+D:\Tasklist\TaskListModels\TaskListModels\bin\Staging\TaskListModels.dll
+D:\Tasklist\TaskListModels\TaskListModels\bin\Staging\TaskListModels.pdb
+D:\Tasklist\TaskListModels\TaskListModels\obj\Staging\TaskListModels.csproj.CoreCompileInputs.cache
+D:\Tasklist\TaskListModels\TaskListModels\obj\Staging\TaskListModels.dll
+D:\Tasklist\TaskListModels\TaskListModels\obj\Staging\TaskListModels.pdb
